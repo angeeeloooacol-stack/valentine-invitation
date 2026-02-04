@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>For Mahal 💖</title>
+  <style>
+    body {
+      background: linear-gradient(135deg, #ffb6c1, #ffe4e1);
+      font-family: 'Comic Sans MS', cursive;
+      text-align: center;
+      padding: 40px;
+      color: #b30059;
+      overflow: hidden;
+    }
+
+    .card {
+      background: white;
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      margin: auto;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      position: relative;
+      z-index: 2;
+    }
+
+    h1 { font-size: 2.2em; }
+    p { font-size: 1.2em; }
+
+    button {
+      background: #ff4d88;
+      color: white;
+      border: none;
+      padding: 15px 25px;
+      font-size: 1em;
+      border-radius: 30px;
+      cursor: pointer;
+      margin: 10px;
+      position: relative;
+    }
+
+    button:hover {
+      background: #e6005c;
+    }
+
+    #answer {
+      margin-top: 20px;
+      font-size: 1.3em;
+      display: none;
+    }
+
+    /* 💖 Floating Hearts */
+    .heart {
+      position: absolute;
+      color: #ff4d88;
+      animation: floatUp 6s linear infinite;
+      opacity: 0.8;
+      z-index: 1;
+    }
+
+    @keyframes floatUp {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="card">
+    <h1>Hi Mahal 💕</h1>
+    <p>I have an important question… 😳</p>
+    <p>Will you be my Valentine? 🌹</p>
+
+    <button onclick="yesClicked()">YES 💖</button>
+    <button id="noBtn">NO 🙃</button>
+
+    <div id="answer"></div>
+  </div>
+
+  <script>
+    function yesClicked() {
+      document.getElementById("answer").style.display = "block";
+      document.getElementById("answer").innerHTML =
+        "YAYYY!!! 🎉💘<br>I knew it 😌<br>Happy Valentine’s Day, Mahal 💕";
+    }
+
+    // 🏃 NO button runs away
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", moveButton);
+    noBtn.addEventListener("click", moveButton);
+
+    function moveButton() {
+      const x = Math.random() * 200 - 100;
+      const y = Math.random() * 200 - 100;
+      noBtn.style.transform = `translate(${x}px, ${y}px)`;
+    }
+
+    // 💖 Floating hearts
+    setInterval(() => {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerHTML = "💖";
+      heart.style.left = Math.random() * 100 + "vw";
+      heart.style.fontSize = Math.random() * 20 + 15 + "px";
+      heart.style.animationDuration = Math.random() * 3 + 4 + "s";
+      document.body.appendChild(heart);
+
+      setTimeout(() => heart.remove(), 6000);
+    }, 300);
+  </script>
+
+</body>
+</html>
